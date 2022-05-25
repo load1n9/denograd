@@ -1,0 +1,1 @@
+export { Scalar } from './src/Scalar.ts';
