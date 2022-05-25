@@ -2,11 +2,12 @@ import { Layer } from "./Layer.ts";
 import { Scalar } from "./Scalar.ts";
 
 export class MLP {
-  layers: Layer[];
+  layers: Layer[] = [];
   constructor(nin: number, nouts: number[]) {
-    this.layers = nouts.map((nout, i) =>
-      new Layer(nin, nout, i !== nouts.length - 1)
-    );
+    const sz = [nin].concat(nouts);
+    for (const i of nouts) {
+      this.layers.push(new Layer(sz[i], sz[i + 1], i !== nouts.length - 1));
+    }
   }
   call(x: number[] | Scalar[] | Scalar) {
     for (const layer of this.layers) {

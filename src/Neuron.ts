@@ -1,5 +1,5 @@
 import { Scalar } from "./Scalar.ts";
-import { randomUniform } from "./utils.ts";
+import { randomUniform, sum } from "./utils.ts";
 
 export class Neuron {
   w: Scalar[] = [];
@@ -10,10 +10,7 @@ export class Neuron {
     }
   }
   call(x: Scalar[] | number[]) {
-    const act = this.w.reduce(
-      (acc, curr, i) => Scalar.add(acc, curr).mul(x[i]),
-      this.b,
-    );
+    const act = sum(this.w.map((wi, i) => Scalar.mul(wi, x[i])), this.b);
     return this.nonLinear ? act.relu() : act;
   }
   parameters() {

@@ -1,9 +1,7 @@
-import { Tensor } from "./Tensor.ts";
+import { Scalar } from "./Scalar.ts";
 
-export const randomUniform = (min: number, max: number) =>
-  Math.floor(
-    Math.random() * (Math.floor(max) - Math.ceil(min) + 1) + Math.ceil(min),
-  );
+export const randomUniform = (a: number, b: number) =>
+  a + (b - a) * Math.random();
 let return_v = false;
 let v_val = 0.0;
 
@@ -30,11 +28,8 @@ export const randn = (mu: number, std: number) => mu + gaussRandom() * std;
 
 export const zeros = (n?: number) => n ? new Float64Array(n) : [];
 
-export const RandMat = (n: number, d: number, mu: number, std: number) => {
-  const m = new Tensor(n, d);
-  fillRandn(m, mu, std);
-  return m;
-};
-export const fillRandn = (w: Tensor, mu: number, std: number) => {
-  for (let i = 0, n = w.out.length; i < n; i++) w.out[i] = randn(mu, std);
-};
+export const sum = (array: Scalar[], num: Scalar) => {
+  let output = array[0];
+  for (let i = 1; i < array.length; i++) output = output.add(array[i]).add(num);
+  return output;
+}
