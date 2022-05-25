@@ -9,7 +9,7 @@
 ### Usage
 
 ```typescript
-import { Scalar } from "https://deno.land/x/grad/mod.ts";
+import { Scalar } from "https://crux.land/2KCiqA";
 
 const a = new Scalar(1.5);
 const b = new Scalar(-4.0);
