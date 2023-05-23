@@ -5,4 +5,4 @@ const x = [new Scalar(1.0), new Scalar(-2.0)];
 const y = n.call(x);
 y.backward();
 
-console.log(y.value); 
+console.log(y.value);

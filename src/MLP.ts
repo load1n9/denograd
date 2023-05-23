@@ -9,13 +9,15 @@ export class MLP {
       this.layers.push(new Layer(sz[i], sz[i + 1], i !== nouts.length - 1));
     }
   }
+
   call(x: number[] | Scalar[] | Scalar) {
     for (const layer of this.layers) {
       x = layer.call(x);
     }
     return x;
   }
-  parameters() {
-    return [...this.layers.map((n) => n.parameters())];
+
+  get parameters() {
+    return [...this.layers.map((n) => n.parameters)];
   }
 }

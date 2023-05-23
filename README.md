@@ -1,6 +1,6 @@
 # DenoGrad
 
-### Simple AutoGrad Implementation in Deno
+## Toy AutoGrad Implementation in Deno. DO NOT USE
 
 ### Maintainers
 

@@ -32,4 +32,4 @@ export const sum = (array: Scalar[], num: Scalar) => {
   let output = array[0];
   for (let i = 1; i < array.length; i++) output = output.add(array[i]).add(num);
   return output;
-}
+};

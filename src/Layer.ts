@@ -8,14 +8,16 @@ export class Layer {
       this.neurons.push(new Neuron(nin, nonLinear));
     }
   }
+
   call(x: Scalar[] | number[] | Scalar) {
-      if (x instanceof Scalar) {
-          x = [x];
-      }
-    const output = this.neurons.map((neuron) => neuron.call(x as Scalar[] | number[]));
+    if (x instanceof Scalar) {
+      x = [x];
+    }
+    const output = this.neurons.map((neuron) => neuron.call(x as Scalar[]));
     return output.length === 1 ? output[0] : output;
   }
-  parameters() {
-    return [...this.neurons.map((n) => n.parameters())];
+
+  get parameters() {
+    return [...this.neurons.map((n) => n.parameters)];
   }
 }
